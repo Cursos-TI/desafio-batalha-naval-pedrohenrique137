@@ -1,12 +1,10 @@
 #include <stdio.h>
 
-int main() {
-
-    // Tamanho fixo do tabuleiro e dos navios
+// Tamanho fixo do tabuleiro e dos navios
 #define TAM_TABULEIRO 10
 #define TAM_NAVIO 3
 
-// Função para imprimir o tabuleiro
+// Função para imprimir o tabuleiro (fora do main!)
 void imprimirTabuleiro(int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO]) {
     printf("Tabuleiro:\n\n");
     for (int i = 0; i < TAM_TABULEIRO; i++) {
@@ -21,7 +19,7 @@ int main() {
     // Declaração do tabuleiro
     int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO];
 
-    // Inicialização do tabuleiro com 0 (água)
+    // Inicialização com 0 (água)
     for (int i = 0; i < TAM_TABULEIRO; i++) {
         for (int j = 0; j < TAM_TABULEIRO; j++) {
             tabuleiro[i][j] = 0;
@@ -32,13 +30,13 @@ int main() {
     int navioHorizontal[TAM_NAVIO] = {3, 3, 3};
     int navioVertical[TAM_NAVIO] = {3, 3, 3};
 
-    // Coordenadas iniciais dos navios (modifique se quiser)
+    // Coordenadas iniciais
     int linhaHorizontal = 2;
     int colunaHorizontal = 4;
     int linhaVertical = 5;
     int colunaVertical = 7;
 
-    // Verificação de limites para posicionamento horizontal
+    // Posicionamento horizontal
     if (colunaHorizontal + TAM_NAVIO <= TAM_TABULEIRO) {
         for (int i = 0; i < TAM_NAVIO; i++) {
             tabuleiro[linhaHorizontal][colunaHorizontal + i] = navioHorizontal[i];
@@ -48,7 +46,7 @@ int main() {
         return 1;
     }
 
-    // Verificação de limites e sobreposição para o navio vertical
+    // Posicionamento vertical
     if (linhaVertical + TAM_NAVIO <= TAM_TABULEIRO) {
         for (int i = 0; i < TAM_NAVIO; i++) {
             if (tabuleiro[linhaVertical + i][colunaVertical] == 0) {
@@ -63,8 +61,8 @@ int main() {
         return 1;
     }
 
-    // Exibe o tabuleiro final
+    // Exibir tabuleiro
     imprimirTabuleiro(tabuleiro);
-    
+
     return 0;
 }
